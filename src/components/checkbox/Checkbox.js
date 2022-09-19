@@ -3,7 +3,7 @@ import { TouchableOpacity, View, Image } from "react-native"
 import styles from "../checkbox/styles"
 
 const Checkbox = ({checked, setChecked}) => {
-
+    
     return (
         <TouchableOpacity activeOpacity={0.6} style={styles.container} onPress={() => setChecked(!checked)}>
             {/* show grey bg innerContainer when checked */}
@@ -17,4 +17,4 @@ const Checkbox = ({checked, setChecked}) => {
     )
 }
 
-export default Checkbox
+export default React.memo(Checkbox)

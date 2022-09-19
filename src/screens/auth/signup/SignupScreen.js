@@ -9,6 +9,7 @@ import Separator from "../../../components/Separator/Separator"
 
 const SignupScreen = () => {
   const [checked, setChecked] = useState(false)
+  console.log("SignupScreen")
   
   return (
     <View style={styles.container}>
@@ -28,4 +29,4 @@ const SignupScreen = () => {
   )
 }
 
-export default SignupScreen
+export default React.memo(SignupScreen)
