@@ -22,6 +22,18 @@ const styles = StyleSheet.create({
     },
     button: {
         marginVertical: 20
+    },
+    footerText: {
+        fontSize: 14,
+        fontWeight: "500",
+        color: colors.blue,
+        textAlign: "center",
+        marginBottom: 50
+    },
+    footerLink: {
+        fontSize: 14,
+        fontWeight: "700",
+        color: colors.blue
     }
 })
 

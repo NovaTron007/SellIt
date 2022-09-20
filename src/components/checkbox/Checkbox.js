@@ -1,6 +1,6 @@
 import React from 'react'
 import { TouchableOpacity, View, Image } from "react-native"
-import styles from "../checkbox/styles"
+import styles from "./styles"
 
 const Checkbox = ({checked, setChecked}) => {
     

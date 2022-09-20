@@ -1,18 +1,23 @@
 import React, { useState } from 'react'
-import { View, Text } from "react-native"
+import { View, Text, ScrollView } from "react-native"
 import AuthHeader from "../../../components/authHeader/AuthHeader"
 import Input from "../../../components/input/Input"
 import Checkbox from "../../../components/checkbox/Checkbox"
 import styles from "./styles"
 import Button from "../../../components/button/Button"
 import Separator from "../../../components/Separator/Separator"
+import GoogleButton from "../../../components/googleButton/GoogleButton"
 
 const SignupScreen = () => {
   const [checked, setChecked] = useState(false)
   console.log("SignupScreen")
+
+  const onSignIn = () => {
+    console.log("onSignIn")
+  }
   
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <AuthHeader title="Sign Up"></AuthHeader>
       <Input labelText="Name" placeholder="Joe Bloggs" />
       <Input labelText="E-mail" placeholder="example@gmail.com" />
@@ -25,7 +30,14 @@ const SignupScreen = () => {
 
       <Separator title="Or sign up with" />
 
-    </View>
+      <GoogleButton />
+
+      <Text style={styles.footerText}>
+        Already have an account? 
+        <Text style={styles.footerLink} onPress={onSignIn}> Sign In</Text>
+      </Text>
+
+    </ScrollView>
   )
 }
 
