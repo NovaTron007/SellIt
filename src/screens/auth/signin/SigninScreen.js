@@ -6,31 +6,41 @@ import styles from "./styles"
 import Button from "../../../components/button/Button"
 import Separator from "../../../components/Separator/Separator"
 import GoogleButton from "../../../components/googleButton/GoogleButton"
+import { SafeAreaView } from "react-native-safe-area-context"
 
-const SigninScreen = () => {
+const SigninScreen = ({navigation}) => {
   console.log("SigninScreen")
 
+  // sign in
   const onSignIn = () => {
     console.log("onSignIn")
   }
+
+  // go back
+  const goBack = () => {
+    navigation.goBack()
+  }
   
+
   return (
-    <ScrollView style={styles.container}>
-      <AuthHeader title="Sign In"></AuthHeader>
-      <Input labelText="E-mail" placeholder="example@gmail.com" />
-      <Input labelText="Password" placeholder="********" isPassword={true} />
-      <Button title="Sign In" style={styles.button} />
+    <SafeAreaView>
+      <ScrollView style={styles.container}>
+        <AuthHeader title="Sign In" onBackPress={goBack}></AuthHeader>
+        <Input labelText="E-mail" placeholder="example@gmail.com" />
+        <Input labelText="Password" placeholder="********" isPassword={true} />
+        <Button title="Sign In" style={styles.button} />
 
-      <Separator title="Or sign up with" />
+        <Separator title="Or sign up with" />
 
-      <GoogleButton />
+        <GoogleButton />
 
-      <Text style={styles.footerText}>
-        Don’t have an account?
-        <Text style={styles.footerLink} onPress={onSignIn}> Sign Up</Text>
-      </Text>
+        <Text style={styles.footerText}>
+          Don’t have an account?
+          <Text style={styles.footerLink} onPress={onSignIn}> Sign Up</Text>
+        </Text>
 
-    </ScrollView>
+      </ScrollView>
+    </SafeAreaView>
   )
 }
 
