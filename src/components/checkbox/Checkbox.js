@@ -9,7 +9,7 @@ const Checkbox = ({checked, setChecked}) => {
             {/* show grey bg innerContainer when checked */}
             { checked ? 
                 <View style={styles.innerContainer}>
-                    <Image source={require("../../assets/checked.png")} style={styles.image} />
+                    <Image source={require("../../assets/icons/checked.png")} style={styles.image} />
                 </View>  
                 : null 
             }

@@ -15,7 +15,7 @@ const Input = ({labelText, placeholder, isPassword}) => {
             {/* if password show Pressable and state */}
             { isPassword ?
               <Pressable onPress={() => setPasswordHidden(!passwordHidden)}>
-                <Image style={styles.eye} source={passwordHidden ? require("../../assets/eye.png") : require("../../assets/eye_closed.png")} />
+                <Image style={styles.eye} source={passwordHidden ? require("../../assets/icons/eye.png") : require("../../assets/icons/eye_closed.png")} />
               </Pressable>
               : null
             }
