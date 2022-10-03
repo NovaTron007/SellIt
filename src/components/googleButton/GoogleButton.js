@@ -32,7 +32,7 @@ const GoogleButton = () => {
 
   return (
     <TouchableOpacity activeOpacity={0.6} style={styles.container} onPress={handleGoogleSignin}>
-      <Image source={require("../../assets/google-signin.png")} style={styles.image}></Image>
+      <Image source={require("../../assets/icons/google-signin.png")} style={styles.image}></Image>
     </TouchableOpacity>
   )
 }

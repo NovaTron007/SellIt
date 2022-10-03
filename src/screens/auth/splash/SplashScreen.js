@@ -18,7 +18,7 @@ const SplashScreen = ({navigation}) => {
     /* resizeMode fit within screen borders */
     <View style={styles.container}>
       {/* banner */}
-      <Image style={styles.image} resizeMode={"contain"} source={require("../../../assets/splash_image.png")} />
+      <Image style={styles.image} resizeMode={"contain"} source={require("../../../assets/images/splash_image.png")} />
       {/* text */}
       <View style={styles.titleContainer}>
         <Text style={styles.title}>Sell everything,</Text>

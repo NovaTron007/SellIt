@@ -10,7 +10,7 @@ const AuthHeader = ({title, onBackPress}) => {
     <SafeAreaView>
       <View style={styles.container}>
           <Pressable hitStop={20} onPress={onBackPress}>
-            <Image style={styles.image} source={require("../../assets/back-arrow.png")}></Image>
+            <Image style={styles.image} source={require("../../assets/icons/back-arrow.png")}></Image>
           </Pressable>
           <Text style={styles.title}>{title}</Text>
       </View>

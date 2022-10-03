@@ -39,13 +39,13 @@ const Tabs = () => (
         let icon;
 
         if (route.name === 'Home') {
-          icon = focused ? require("./src/assets/home-active.png") : require("./src/assets/home.png")
+          icon = focused ? require("./src/assets/icons/home-active.png") : require("./src/assets/icons/home.png")
         } 
         if(route.name === "Favourites") {
-          icon = focused ? require("./src/assets/marker-active.png") : require("./src/assets/marker.png")
+          icon = focused ? require("./src/assets/icons/marker-active.png") : require("./src/assets/icons/marker.png")
         }
         else if (route.name === 'Profile') {
-          icon = focused ? require("./src/assets/person-active.png") : require("./src/assets/person.png")
+          icon = focused ? require("./src/assets/icons/person-active.png") : require("./src/assets/icons/person.png")
         }
         // You can return any component that you like here!
         return <Image style={{ width: 24, height: 24 }} source={icon} />
