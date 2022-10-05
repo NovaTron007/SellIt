@@ -5,14 +5,14 @@ const styles = StyleSheet.create({
     container: {
       flexDirection: "column",
       alignItems: "center",
+      height: 95
     },
     imageContainer: {
       flexDirection: "row",
       justifyContent: "center",
       alignItems: "center",
       borderRadius: 12,
-      padding: 8,
-      marginHorizontal: 10,
+      marginHorizontal: 8,
       backgroundColor: colors.lightGrey,
       height: 54,
       width: 54,

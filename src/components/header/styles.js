@@ -5,7 +5,8 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-between"
+        justifyContent: "space-between",
+        paddingHorizontal: 24
     },
     image: {
       width: 24,
