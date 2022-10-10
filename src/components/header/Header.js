@@ -4,8 +4,9 @@ import Input from "../input/Input"
 import styles from "./styles"
 
 
-const Header = ({ title, showBackBtn, showSearchBtn, showLogoutBtn, onLogout, onBackPress }) => {
-    const [searchInput, setSearchInput] = useState(false)
+const Header = ({ title, showBackBtn, showSearchBtn, showLogoutBtn, onLogout, onBackPress, keyword, setKeyword }) => {
+    // show search input
+    const [showSearchInput, setShowSearchInput] = useState(false)
 
     return (
         <>
@@ -15,7 +16,7 @@ const Header = ({ title, showBackBtn, showSearchBtn, showLogoutBtn, onLogout, on
                         <Image style={styles.image} source={require("../../assets/icons/back-arrow.png")} />
                     </Pressable>
                     : showSearchBtn ?
-                        <Pressable hitSlop={20} onPress={() => setSearchInput(prev => !prev)}>
+                        <Pressable hitSlop={20} onPress={() => setShowSearchInput(prev => !prev)}>
                             <Image style={styles.image} source={require("../../assets/icons/search.png")} />
                         </Pressable>
                         : <Text style={styles.space}></Text> // empty space as final fallback
@@ -32,7 +33,18 @@ const Header = ({ title, showBackBtn, showSearchBtn, showLogoutBtn, onLogout, on
                     : <Text style={styles.space}></Text> // empty space
                 }
             </View>
-            {searchInput ? <Input placeHolder="Enter keywords..." /> : null}
+            {/* show search input */}
+            { showSearchInput ? 
+                <>
+                    <View style={styles.searchContainer}>
+                        <Input 
+                            placeHolder="Enter keyword..." 
+                            value={keyword} 
+                            onChange={setKeyword}
+                        /> 
+                    </View>
+                </>
+            : null }
         </>
     )
 }

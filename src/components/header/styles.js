@@ -21,6 +21,9 @@ const styles = StyleSheet.create({
     space: {
         width: 24,
         height: 24
+    },
+    searchContainer: {
+      paddingHorizontal: 24
     }
 })
 
