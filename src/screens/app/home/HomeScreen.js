@@ -20,7 +20,7 @@ const HomeScreen = () => {
 
   console.log("filteredProducts: ", filteredProducts)
 
-  // for flatlist: render each item as component
+  // for flatlist: render each item as component (get item from FlatList)
   const renderCatItem = ({ item, index }) => {
     console.log("item.id: ", item.id)
     return(
@@ -33,7 +33,7 @@ const HomeScreen = () => {
     )
   }
 
-  // for flatlist: render each product item as component
+  // for flatlist: render each product item as component (get item from FlatList)
   const renderProductItem = ({item}) => (
     <ProductHomeItem {...item} />
   )
@@ -96,7 +96,7 @@ const HomeScreen = () => {
             keyExtractor={(item, index) => (item.id)}
             numColumns={2}
             style={styles.productsFlatList}
-            ListFooterComponent={<View style={{height: 400}} />} // add footer to flatlist
+            ListFooterComponent={<View style={{height: 400}} />} // add footer to flatlist for spacing
           />
         : 
         // no products found
