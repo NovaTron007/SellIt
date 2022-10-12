@@ -40,7 +40,7 @@ export const productsData = [
         price: '$ 120.00'
     },
     {
-        id: 5,
+        id: 6,
         title: 'Bed',
         image: 'https://www.housingunits.co.uk/media/catalog/product/cache/60968cec045f20fb06ab5f7720001507/5/5/555685b1a8eecf2133f18451526a4ede.jpg',
         images: [
