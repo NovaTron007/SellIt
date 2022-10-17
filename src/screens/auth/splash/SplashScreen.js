@@ -25,8 +25,10 @@ const SplashScreen = ({navigation}) => {
         <Text style={styles.title}>right here!</Text>
         <Text style={[styles.title, styles.titleInner]}>Sell-it</Text>{/* array with multiple styles */}
       </View>
-      {/* buttons */}
-      <Button title="Sign up" onPress={onSignup} />
+      {/* buttons: buttonContainer set to flex: row as button is set to flex: 1 */}
+      <View style={styles.buttonContainer}>
+        <Button title="Sign up" onPress={onSignup} />
+      </View>
       <Pressable hitStop={20} onPress={onSignin}><Text style={styles.footerText}>Sign In</Text></Pressable>
     </View> 
   )

@@ -35,6 +35,10 @@ const styles = StyleSheet.create({
         textAlign: "center",
         textDecorationLine: "underline",
         marginTop: 30
+    },
+    buttonContainer: {
+        flexDirection: "row",
+        alignItems: "center"
     }
 
 })
