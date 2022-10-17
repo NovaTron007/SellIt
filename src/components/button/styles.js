@@ -3,7 +3,7 @@ import { colors } from "../../utils/colors"; // custom colors
 
 const styles = StyleSheet.create({
     container: {
-        width: "100%",
+        flex: 1,
         backgroundColor: colors.blue,
         borderRadius: 6,
         paddingVertical: 20,

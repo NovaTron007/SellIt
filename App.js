@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { Image } from "react-native"
+// screens
 import SplashScreen from "./src/screens/auth/splash/SplashScreen"
 import SignupScreen from "./src/screens/auth/signup/SignupScreen"
 import SigninScreen from "./src/screens/auth/signin/SigninScreen"
 import HomeScreen from "./src/screens/app/home/HomeScreen"
 import FavouritesScreen from "./src/screens/app/favourites/FavouritesScreen"
 import ProfileScreen from "./src/screens/app/profile/ProfileScreen"
+import ProductDetailsScreen from "./src/screens/app/productDetails/ProductDetailsScreen"
+// google env var, import statusCodes along with GoogleSignin
 import { GOOGLE_WEB_CLIENT_ID} from "@env"
-// import statusCodes along with GoogleSignin
 import { GoogleSignin } from "@react-native-google-signin/google-signin"
 // react navigation
 import { NavigationContainer } from "@react-navigation/native"
@@ -79,12 +81,20 @@ const App = () => {
     <SafeAreaProvider>
       <NavigationContainer theme={theme}>
         <Stack.Navigator>
-          { loggedIn ? <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} /> : 
+          { loggedIn ? (
             <>
-              <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />{/* options prop of Stack.Screen: hide default header */} 
-              <Stack.Screen name="Signup" component={SignupScreen} options={{ headerShown: false }} />
-              <Stack.Screen name="Signin" component={SigninScreen} options={{ headerShown: false }} />
+              <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} /> 
+              <Stack.Screen name="ProductDetails" component={ProductDetailsScreen} options={{ headerShown: false}} />
             </>
+          )
+          : 
+            (
+              <>
+                <Stack.Screen name="Splash" component={SplashScreen} options={{ headerShown: false }} />{/* options prop of Stack.Screen: hide default header */} 
+                <Stack.Screen name="Signup" component={SignupScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="Signin" component={SigninScreen} options={{ headerShown: false }} />
+              </>
+            )
           }
         </Stack.Navigator>
       </NavigationContainer>

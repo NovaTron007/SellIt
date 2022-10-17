@@ -8,7 +8,7 @@ import { productsData } from "../../../assets/data/products" // data file
 import CategoryItem from "../../../components/categoriesNav/CategoryItem"
 import ProductHomeItem from "../../../components/product/ProductHomeItem"
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
   // init selected index for category
   const [selectedCatId, setSelectedCatId] = useState()
 
@@ -17,8 +17,6 @@ const HomeScreen = () => {
 
   // search keywords (controlled input)
   const [keyword, setKeyword] = useState()
-
-  console.log("filteredProducts: ", filteredProducts)
 
   // for flatlist: render each item as component (get item from FlatList)
   const renderCatItem = ({ item, index }) => {
@@ -34,9 +32,16 @@ const HomeScreen = () => {
   }
 
   // for flatlist: render each product item as component (get item from FlatList)
-  const renderProductItem = ({item}) => (
-    <ProductHomeItem {...item} />
-  )
+  const renderProductItem = ({item}) => {
+    // 1st arg: link to ProductDetails screen, 2nd arg: params go here
+    const onProductPress = (product) => {
+      navigation.navigate("ProductDetails",  {product}) // pass product item as params for the route
+    }
+    // return item and pass props such as whole product item to onProductPress
+    return(
+      <ProductHomeItem {...item} onPress={() => onProductPress(item)} />
+    )
+  }
   
 
   // listen for selectedCatId change and keyword: setFiltereddProducts & keyword

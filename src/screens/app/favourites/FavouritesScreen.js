@@ -5,13 +5,22 @@ import { productsData } from "../../../assets/data/products"
 import Header from "../../../components/header/Header"
 import FavouriteItem from "../../../components/favouriteItem/FavouriteItem"
 
-const FavouritesScreen = () => {
+const FavouritesScreen = ({navigation}) => {
+
   // for flatlist: render each product item as component, get item from FlatList
   const renderFavouriteItem = ({item}) => {
+    
+    // 1st arg: link to ProductDetails screen, 2nd arg: params go here
+    const onProductPress = () => {
+      navigation.navigate("ProductDetails", {product: item}) // pass product item as params for the route (renamed as product)
+    }
+    // return item and pass props such as whole product item to onProductPress
     return(
-      <FavouriteItem {...item} />
+      <FavouriteItem {...item} onPress={onProductPress} />
     )
+
   }
+
 
   return (
     <SafeAreaView>
