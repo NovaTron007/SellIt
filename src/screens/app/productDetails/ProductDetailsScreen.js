@@ -1,8 +1,9 @@
 import React from "react"
 import { View, Text, Image, ScrollView, Pressable } from 'react-native'
 import { SafeAreaView } from "react-native-safe-area-context"
-import Button from "../../../components/button/Button"
 import styles from "./styles"
+import Button from "../../../components/button/Button"
+import Carousel from "../../../components/carousel/Carousel"
 
 const ProductDetailsScreen = ({route, navigation}) => {
     // destructure product from route params
@@ -17,7 +18,10 @@ const ProductDetailsScreen = ({route, navigation}) => {
     return (
         <SafeAreaView style={styles.safe}>
             <ScrollView style={styles.container}>
-                <Image style={styles.image} source={ {uri: product?.image} } />
+                { product?.images?.length ? 
+                    <Carousel data={product?.images} />
+                    : <Image style={styles.image} source={ {uri: product?.image} } />
+                }
                 <View style={styles.content}>
                     <Text style={styles.title}>{product?.title}</Text>
                     <Text style={styles.price}>{product?.price}</Text>
