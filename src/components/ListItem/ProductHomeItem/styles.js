@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native" // get width of device
-import { colors } from "../../utils/colors"
+import { colors } from "../../../utils/colors"
 
 // get width of device
 const { width } = Dimensions.get("window")

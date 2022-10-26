@@ -35,7 +35,7 @@ const Carousel = ({data}) => {
             {/* pagination buttons map as many as there are images */}
             <View style={styles.paginateButtonContainer}>
                 { data?.map((_item, index) => (
-                    <View style={[styles.paginateButton, index === activeIndex ? styles.activeButton : {}]}></View>
+                    <View key={index} style={[styles.paginateButton, index === activeIndex ? styles.activeButton : {}]}></View>
                 ))}
             </View>
         </View>
