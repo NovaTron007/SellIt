@@ -1,3 +1,4 @@
+import React from 'react'
 import { View, Pressable, Image, Text } from 'react-native'
 import styles from "./styles"
 
@@ -14,4 +15,4 @@ const FavouriteItem = ({title, price, image, onPress}) => {
   )
 }
 
-export default FavouriteItem
+export default React.memo(FavouriteItem)
