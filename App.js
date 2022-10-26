@@ -20,9 +20,11 @@ import { colors } from "./src/utils/colors";
 import { SafeAreaProvider } from "react-native-safe-area-context"
 // react natigation bottom tabs
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
+import SettingsScreen from "./src/screens/app/settings/SettingsScreen"
 
 // wrap Stack.Screen with screen components
 const Stack = createNativeStackNavigator()
+
 // bottom tabs using Tab.Navigator
 const Tab = createBottomTabNavigator()
 
@@ -31,6 +33,16 @@ const theme = {
   colors: {
     background: colors.white
   }
+}
+
+// nested routes inside tab navigator
+const ProfileScreenStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Settings" component={SettingsScreen} options={{ headerShown: false }} />
+    </Stack.Navigator>
+  )
 }
 
 {/* create tabs for bottom tabs using Tab.Navigator */} 
@@ -46,7 +58,7 @@ const Tabs = () => (
         if(route.name === "Favourites") {
           icon = focused ? require("./src/assets/icons/marker-active.png") : require("./src/assets/icons/marker.png")
         }
-        else if (route.name === 'Profile') {
+        else if (route.name === "ProfileScreenStack") {
           icon = focused ? require("./src/assets/icons/person-active.png") : require("./src/assets/icons/person.png")
         }
         // You can return any component that you like here!
@@ -57,11 +69,15 @@ const Tabs = () => (
         tabBarStyle: { borderTopColor: colors.lightGrey, backgroundColor: colors.white }
       })}
     >
+
+    {/* routes for using tabs */}
     <Tab.Screen name="Home" component={HomeScreen} />
     <Tab.Screen name="Favourites" component={FavouritesScreen} />
-    <Tab.Screen name="Profile" component={ProfileScreen} />
+    <Tab.Screen name="ProfileScreenStack" component={ProfileScreenStack} />
   </Tab.Navigator>
 )
+
+
 
 const App = () => {
   // showh bottom tabs
