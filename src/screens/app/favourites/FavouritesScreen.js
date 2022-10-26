@@ -1,3 +1,4 @@
+import React from 'react'
 import { View, FlatList } from 'react-native'
 import { SafeAreaView } from "react-native-safe-area-context"
 import styles from "./styles"
@@ -24,14 +25,13 @@ const FavouritesScreen = ({navigation}) => {
 
   return (
     <SafeAreaView>
-      <View style={styles.container}>
+      <View>
         <Header title="Favourites" />
         {/* supply FlatList a list */}
         <FlatList
           data={productsData}
           keyExtractor={(item) => String(item.id)}
           renderItem={renderFavouriteItem}
-          style={styles.flatList}
           ListFooterComponent={<View style={{height: 80}} />} // add footer to flatlist for spacing
         />
       </View>
@@ -39,4 +39,4 @@ const FavouritesScreen = ({navigation}) => {
   )
 }
 
-export default FavouritesScreen
+export default React.memo(FavouritesScreen)

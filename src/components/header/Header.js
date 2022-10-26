@@ -1,4 +1,4 @@
-import { useState } from "react"
+import React, { useState } from "react"
 import { View, Text, Pressable, Image } from "react-native"
 import Input from "../input/Input"
 import styles from "./styles"
@@ -49,4 +49,4 @@ const Header = ({ title, showBackBtn, showSearchBtn, showLogoutBtn, onLogout, on
     )
 }
 
-export default Header
+export default React.memo(Header)

@@ -14,6 +14,17 @@ const ProductDetailsScreen = ({route, navigation}) => {
         navigation.goBack()
     }
 
+    // contact button
+    const onContact = () => {
+        // by email
+        const email = "test@test.com" // backend info
+        Linking.openURL(`mailto:${email}`)
+        
+        // by phone
+        // const phone = "12345678" // backend info
+        // Linking.openURL(`tel:${phone}`)
+    }
+
     
     return (
         <SafeAreaView style={styles.safe}>
@@ -36,7 +47,7 @@ const ProductDetailsScreen = ({route, navigation}) => {
                 <View style={styles.footerImageContainer}>
                     <Image style={styles.footerImage} source={require("../../../assets/icons/marker-active.png")} />
                 </View>
-                <Button title="Contact Seller" />
+                <Button title="Contact Seller" onPress={onContact} />
             </View>
         </SafeAreaView>
     )

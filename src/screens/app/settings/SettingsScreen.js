@@ -1,3 +1,4 @@
+import React from "react"
 import { View, Text } from 'react-native'
 import styles from "./styles"
 
@@ -9,4 +10,4 @@ const SettingsScreen = () => {
   )
 }
 
-export default SettingsScreen
+export default React.memo(SettingsScreen)
