@@ -1,5 +1,5 @@
 import React from "react"
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, Linking } from 'react-native'
 import { SafeAreaView } from "react-native-safe-area-context"
 import styles from "./styles"
 import Header from "../../../components/header/Header"
@@ -9,6 +9,12 @@ import ProfileSettingsItem from "../../../components/ListItem/ProfileSettingsIte
 const SettingsScreen = () => {
   const name = "Your name"
   const email = "youremail@test.com"
+
+  // help centre links: link to outside app
+  const itemOnPress = () => {
+    Linking.openURL("https://www.google.com")
+    console.log("itemOnpress")
+  }
 
   const logout = () => {
     console.log("log out")
@@ -26,9 +32,9 @@ const SettingsScreen = () => {
           <Text style={styles.name}>Help Centre</Text>
           <Image source={require("../../../assets/icons/edit.png")} style={styles.image} />
         </View>
-        <ProfileSettingsItem title="FAQ" />
-        <ProfileSettingsItem title="Contact Us" />
-        <ProfileSettingsItem title="Privacy & Terms" />
+        <ProfileSettingsItem title="FAQ" onPress={itemOnPress} />
+        <ProfileSettingsItem title="Contact Us" onPress={itemOnPress} />
+        <ProfileSettingsItem title="Privacy & Terms" onPress={itemOnPress} />
       </View>
       {/* buttons: buttonContainer set to flex: row as button is set to flex: 1 */}
       <Button title="Create Listing" style={styles.buttonContainer} />

@@ -1,5 +1,5 @@
 import React from "react"
-import { View, Text, Image, ScrollView, Pressable } from 'react-native'
+import { View, Text, Image, ScrollView, Pressable, Linking } from 'react-native'
 import { SafeAreaView } from "react-native-safe-area-context"
 import styles from "./styles"
 import Button from "../../../components/button/Button"
