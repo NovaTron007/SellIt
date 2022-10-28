@@ -29,9 +29,7 @@ const ProfileScreen = ({navigation}) => {
         <Text style={styles.name}>Profile Screen</Text>
         <Text style={styles.email}>test@test.com</Text>
         <ProfileSettingsItem title="My Listings" content={`You have ${count} listings`} />
-        <Pressable onPress={onSettingsPress}>
-          <ProfileSettingsItem title="Settings" content="Account, FAQ, Contact" />
-        </Pressable>
+        <ProfileSettingsItem title="Settings" content="Account, FAQ, Contact" onPress={onSettingsPress} />
       </View>
       {/* buttons: buttonContainer set to flex: row as button is set to flex: 1 */}
       <Button title="Create Listing" style={styles.buttonContainer} />
