@@ -7,8 +7,10 @@ const styles = StyleSheet.create({
         flex: 1
     },
     container: {
-        marginHorizontal: 24,
-        flex: 1
+        marginHorizontal: 24
+    },
+    infoContainer: {
+        marginBottom: 8
     },
     name: {
         fontSize: 16,
@@ -23,13 +25,6 @@ const styles = StyleSheet.create({
         color: colors.textGrey,
         marginBottom: 12,
         lineHeight: 15,
-    },
-    buttonContainer: {
-        flexDirection: "row",
-        flex: 0,
-        alignItems: "center",
-        justifyContent: "center",
-        margin: 24
     },
     editHeader: {
         flexDirection: "row",

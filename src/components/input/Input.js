@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, TextInput, Pressable, Image } from "react-native"
 import styles from "./styles"
 
-const Input = ({labelText, placeholder, isPassword, value, onChange}) => {
+const Input = ({labelText, placeholder, isPassword, value, onChange}) => { // call onChange from react native
   // set eye on password
   const [passwordHidden, setPasswordHidden] = useState(true)
 
