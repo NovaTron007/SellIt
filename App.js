@@ -21,6 +21,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context"
 // react natigation bottom tabs
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 import SettingsScreen from "./src/screens/app/settings/SettingsScreen"
+import CreateListingScreen from "./src/screens/app/createListing/CreateListingScreen"
 
 // wrap Stack.Screen with screen components
 const Stack = createNativeStackNavigator()
@@ -41,6 +42,7 @@ const ProfileScreenStack = () => {
     <Stack.Navigator>
       <Stack.Screen name="Profile" component={ProfileScreen} options={{ headerShown: false }} />
       <Stack.Screen name="Settings" component={SettingsScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="CreateListing" component={CreateListingScreen} options={{ headerShown: false }} />
     </Stack.Navigator>
   )
 }

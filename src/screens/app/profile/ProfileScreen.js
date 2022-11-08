@@ -8,31 +8,45 @@ import ProfileSettingsItem from "../../../components/ListItem/ProfileSettingsIte
 
 const ProfileScreen = ({navigation}) => {
   const count = 10
+  
   const logout = () => {
     console.log("log out")
   }
 
-  // navigate to settings screen
-  const onSettingsPress = () => {
-    navigation.navigate("Settings")
-    console.log("onSettingsPress")
+  // go back
+  const goBack = () => {
+    navigation.goBack()
   }
+
+  // navigate to settings screen
+  const settingsItemPress = () => {
+    navigation.navigate("Settings")
+    console.log("settingsItemPressCb")
+  }
+
+  // create listing link
+  const createListing = () => {
+    navigation.navigate("CreateListing")
+  }
+  
 
   return (
     <SafeAreaView style={styles.safe}>
       <Header 
         title="Profile"
         showLogoutBtn
-        onLogout={logout}
+        showBackBtn
+        onPressCb={goBack}
+        onLogoutCb={logout}
       />
       <View style={styles.container}>
         <Text style={styles.name}>Profile Screen</Text>
         <Text style={styles.email}>test@test.com</Text>
         <ProfileSettingsItem title="My Listings" content={`You have ${count} listings`} />
-        <ProfileSettingsItem title="Settings" content="Account, FAQ, Contact" onPress={onSettingsPress} />
+        <ProfileSettingsItem title="Settings" content="Account, FAQ, Contact" onPressCb={settingsItemPress} />
       </View>
       {/* buttons: buttonContainer set to flex: row as button is set to flex: 1 */}
-      <Button title="Create Listing" style={styles.buttonContainer} />
+      <Button title="Create Listing" style={styles.buttonContainer} onPressCb={createListing} />
     </SafeAreaView>
 
   )

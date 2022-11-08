@@ -4,7 +4,7 @@ import Input from "../input/Input"
 import styles from "./styles"
 
 
-const Header = ({ title, showBackBtn, showSearchBtn, showLogoutBtn, onLogout, onBackPress, keyword, setKeyword }) => {
+const Header = ({ title, showBackBtn, showSearchBtn, showLogoutBtn, onLogoutCb, onPressCb, keyword, setKeyword }) => {
     // show search input
     const [showSearchInput, setShowSearchInput] = useState(false)
 
@@ -12,7 +12,7 @@ const Header = ({ title, showBackBtn, showSearchBtn, showLogoutBtn, onLogout, on
         <>
             <View style={styles.container}>
                 {showBackBtn ?
-                    <Pressable hitSlop={20} onPress={onBackPress}>
+                    <Pressable hitSlop={20} onPress={onPressCb}>
                         <Image style={styles.image} source={require("../../assets/icons/back-arrow.png")} />
                     </Pressable>
                     : showSearchBtn ?
@@ -27,7 +27,7 @@ const Header = ({ title, showBackBtn, showSearchBtn, showLogoutBtn, onLogout, on
                 </Text>
 
                 {showLogoutBtn ?
-                    <Pressable hitStop={20} onPress={onLogout}>
+                    <Pressable hitStop={20} onPress={onLogoutCb}>
                         <Image style={styles.image} source={require("../../assets/icons/logout.png")} />
                     </Pressable>
                     : <Text style={styles.space}></Text> // empty space

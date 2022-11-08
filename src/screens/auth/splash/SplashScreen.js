@@ -6,10 +6,12 @@ import styles from "./styles"
 const SplashScreen = ({navigation}) => {
   /* return [ component, component here separated with , ]array of elements for two children if not using View*/
   
-  const onSignin = () => {
+  // go to sign screen
+  const signIn = () => {
     navigation.navigate("Signin")
   }
-  const onSignup = () => {
+  // got to sign up screen
+  const signUp = () => {
     navigation.navigate("Signup")
   }
 
@@ -27,9 +29,9 @@ const SplashScreen = ({navigation}) => {
       </View>
       {/* buttons: buttonContainer set to flex: row as button is set to flex: 1 */}
       <View style={styles.buttonContainer}>
-        <Button title="Sign up" onPress={onSignup} />
+        <Button title="Sign up" onPressCb={signUp} />
       </View>
-      <Pressable hitStop={20} onPress={onSignin}><Text style={styles.footerText}>Sign In</Text></Pressable>
+      <Pressable hitStop={20} onPress={signIn}><Text style={styles.footerText}>Sign In</Text></Pressable>
     </View> 
   )
 }

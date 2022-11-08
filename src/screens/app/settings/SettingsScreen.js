@@ -7,7 +7,7 @@ import Button from "../../../components/button/Button"
 import ProfileSettingsItem from "../../../components/ListItem/ProfileSettingsItem/ProfileSettingsItem"
 import EditableInput from "../../../components/editableInput/EditableInput"
 
-const SettingsScreen = () => {
+const SettingsScreen = ({navigation}) => {
   // get userInfo from api
   const initialState = {
     name: "test",
@@ -19,12 +19,17 @@ const SettingsScreen = () => {
   const [isEditing, setIsEditing] = useState(false)
   
   // help centre links: link to outside app
-  const itemOnPress = () => {
+  const onPressItem = () => {
     Linking.openURL("https://www.google.com")
   }
 
   const logout = () => {
     console.log("log out")
+  }
+
+  // go back
+  const goBack = () => {
+    navigation.goBack()
   }
 
   // onChange update user
@@ -49,7 +54,7 @@ const SettingsScreen = () => {
   return (
     <SafeAreaView style={styles.safe}>
       <ScrollView>
-        <Header title="Settings"showLogoutBtnonLogout={logout} />
+        <Header title="Settings"showLogoutBtn showBackBtn onPressCb={goBack} onLogoutCb={logout} />
         
         <View style={styles.container}>
           <View style={styles.editHeader}>
@@ -59,23 +64,18 @@ const SettingsScreen = () => {
             </Pressable>
           </View>
 
+          {/* personal info input field components */}
           <View style={styles.infoContainer}>
             <EditableInput title="Name" value={userValues.name} editable={isEditing} onChange={(value) => onChangeEditUser("name", value)} />
             <EditableInput title="Email" value={userValues.email} editable={isEditing} onChange={(value) => onChangeEditUser("email", value)} />
-            { isEditing ? <Button title="Save" onPress={saveUser} style={styles.editButton} /> : null }
+            { isEditing ? <Button title="Save" onPressCb={saveUser} style={styles.editButton} /> : null }
           </View>
 
           <View style={styles.infoContainer}>
             <Text style={styles.name}>Help Centre</Text>
-            <ProfileSettingsItem title="FAQ" onPress={itemOnPress} />
-            <ProfileSettingsItem title="Contact Us" onPress={itemOnPress} />
-            <ProfileSettingsItem title="Privacy & Terms" onPress={itemOnPress} />
-          </View>
-
-          <View style={styles.infoContainer}>
-            <Text style={styles.name}>Create Listing</Text>
-              {/* buttons: buttonContainer set to flex: row as button is set to flex: 1 */}
-              <Button title="Create Listing" style={{marginBottom: 20}} />
+            <ProfileSettingsItem title="FAQ" onPressCb={onPressItem} />
+            <ProfileSettingsItem title="Contact Us" onPressCb={onPressItem} />
+            <ProfileSettingsItem title="Privacy & Terms" onPressCb={onPressItem} />
           </View>
       </View>
       </ScrollView>

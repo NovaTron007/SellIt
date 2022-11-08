@@ -12,9 +12,14 @@ const SigninScreen = ({navigation}) => {
   console.log("SigninScreen")
 
   // sign in
-  const onSignIn = () => {
-    console.log("onSignIn")
+  const signIn = () => {
+    console.log("signIn")
   }
+
+  // sign up
+  const signUp = () => {
+    console.log("signUp")
+  }  
 
   // go back
   const goBack = () => {
@@ -25,10 +30,10 @@ const SigninScreen = ({navigation}) => {
   return (
     <SafeAreaView>
       <ScrollView style={styles.container}>
-        <AuthHeader title="Sign In" onBackPress={goBack}></AuthHeader>
+        <AuthHeader title="Sign In" onPressCb={goBack}></AuthHeader>
         <Input labelText="E-mail" placeholder="example@gmail.com" />
         <Input labelText="Password" placeholder="********" isPassword={true} />
-        <Button title="Sign In" style={styles.button} />
+        <Button title="Sign In" style={styles.button} onPressCb={signIn} />
 
         <Separator title="Or sign up with" />
 
@@ -36,7 +41,7 @@ const SigninScreen = ({navigation}) => {
 
         <Text style={styles.footerText}>
           Don’t have an account?
-          <Text style={styles.footerLink} onPress={onSignIn}> Sign Up</Text>
+          <Text style={styles.footerLink} onPress={signUp}> Sign Up</Text>
         </Text>
 
       </ScrollView>
