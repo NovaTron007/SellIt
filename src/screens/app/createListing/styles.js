@@ -48,7 +48,27 @@ const styles = StyleSheet.create({
         height: 90,
         marginRight: 8,
         marginVertical: 8,
-        borderRadius: 10
+        borderRadius: 10,
+        position: "relative",
+        zIndex: 1
+    },
+    closeIconContainer: {
+        position: "absolute",
+        zIndex: 1,
+        zIndex: 10,
+        right: 0,
+        marginBottom: 40
+    },
+    closeIcon: {
+        width: 24,
+        height: 24
+    },
+    textAreaContainer: {
+        minHeight: 150,
+        alignItems: "flex-start",
+        justifyContent: "center",
+        flexDirection: "row",
+        flex: 1
     }
 })
 
