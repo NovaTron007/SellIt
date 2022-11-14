@@ -47,7 +47,7 @@ const ProductDetailsScreen = ({route, navigation}) => {
                 <View style={styles.footerImageContainer}>
                     <Image style={styles.footerImage} source={require("../../../assets/icons/marker-active.png")} />
                 </View>
-                <Button title="Contact Seller" onPress={onContact} />
+                <Button title="Contact Seller" onPressCb={onContact} />
             </View>
         </SafeAreaView>
     )

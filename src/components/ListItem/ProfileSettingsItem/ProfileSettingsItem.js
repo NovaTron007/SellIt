@@ -2,9 +2,9 @@ import React from 'react'
 import { Pressable, View, Image, Text } from 'react-native'
 import styles from "./styles"
 
-const ProfileSettingsItem = ({title, content, image, onPress}) => {
+const ProfileSettingsItem = ({title, content, image, onPressCb}) => {
   return (
-    <Pressable style={styles.container} onPress={onPress}>
+    <Pressable style={styles.container} onPress={onPressCb}>
         <View style={styles.content}>
           <Text style={content ? [styles.heading, {marginBottom: 8}] : styles.heading}>{title}</Text>
           { content ? 

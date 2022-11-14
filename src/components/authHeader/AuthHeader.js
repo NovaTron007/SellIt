@@ -4,12 +4,12 @@ import { SafeAreaView } from "react-native-safe-area-context"
 import styles from "./styles"
 
 
-const AuthHeader = ({title, onBackPress}) => {
+const AuthHeader = ({title, goBackCb}) => {
 
   return (
     <SafeAreaView>
       <View style={styles.container}>
-          <Pressable hitStop={20} onPress={onBackPress}>
+          <Pressable hitStop={20} onPress={goBackCb}>
             <Image style={styles.image} source={require("../../assets/icons/back-arrow.png")}></Image>
           </Pressable>
           <Text style={styles.title}>{title}</Text>

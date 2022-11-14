@@ -18,6 +18,11 @@ const HomeScreen = ({navigation}) => {
   // search keywords (controlled input)
   const [keyword, setKeyword] = useState()
 
+  // logout
+  const logout = () => {
+    console.log("log out")
+  }
+
   // for flatlist: render each item as component (get item from FlatList)
   const renderCatItem = ({ item, index }) => {
     console.log("item.id: ", item.id)
@@ -80,6 +85,7 @@ const HomeScreen = ({navigation}) => {
           title="Find all you need" 
           showSearchBtn
           showLogoutBtn
+          onLogoutCb={logout}
           keyword={keyword}
           setKeyword={setKeyword} // pass to Input component to set value
         />

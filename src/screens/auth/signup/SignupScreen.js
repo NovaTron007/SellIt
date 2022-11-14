@@ -13,10 +13,15 @@ const SignupScreen = ({navigation}) => {
   // checkbox state
   const [checked, setChecked] = useState(false)
 
-  // sign in 
-  const onSignIn = () => {
-    console.log("onSignIn")
+  // sign in function
+  const signIn = () => {
+    console.log("signIn")
   }
+
+  // sign up function
+  const signUp = () => {
+    console.log("signUp")
+  }  
 
   // go back
   const onBack = () => {
@@ -28,7 +33,7 @@ const SignupScreen = ({navigation}) => {
     <SafeAreaView>
       <ScrollView style={styles.container}>
         {/* header */}
-        <AuthHeader title="Sign Up" onBackPress={onBack}></AuthHeader>
+        <AuthHeader title="Sign Up" goBackCb={onBack}></AuthHeader>
         {/* inputs */}
         <Input labelText="Name" placeholder="Joe Bloggs" />
         <Input labelText="E-mail" placeholder="example@gmail.com" />
@@ -37,7 +42,7 @@ const SignupScreen = ({navigation}) => {
           <Checkbox checked={checked} setChecked={setChecked} />
           <Text style={styles.agreeText}>I agree with <Text style={styles.agreeTextInner}>Terms & Privacy</Text></Text>
         </View>
-        <Button title="Sign Up" style={styles.button} />
+        <Button title="Sign Up" style={styles.button} onPressCb={signUp} />
 
         <Separator title="Or sign up with" />
 
@@ -45,7 +50,7 @@ const SignupScreen = ({navigation}) => {
 
         <Text style={styles.footerText}>
           Already have an account? 
-          <Text style={styles.footerLink} onPress={onSignIn}> Sign In</Text>
+          <Text style={styles.footerLink} onPress={signIn}> Sign In</Text>
         </Text>
 
       </ScrollView>
