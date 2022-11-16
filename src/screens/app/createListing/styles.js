@@ -69,6 +69,9 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         flexDirection: "row",
         flex: 1
+    },
+    categoryInput: {
+        paddingVertical: 4
     }
 })
 
