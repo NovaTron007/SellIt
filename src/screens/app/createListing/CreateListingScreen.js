@@ -6,6 +6,9 @@ import Header from "../../../components/header/Header"
 import { launchImageLibrary } from "react-native-image-picker"
 import styles from "./styles"
 import Input from "../../../components/input/Input"
+import Button from "../../../components/button/Button"
+// destructure categoriesData array of objects from data file for category dropdown
+import { categoriesData } from "../../../assets/data/categories"
 
 const CreateListingScreen = ({ navigation }) => {
     // set images from uploadImage
@@ -22,11 +25,10 @@ const CreateListingScreen = ({ navigation }) => {
     }
 
     // upload image function using launchImageLibrary
-    const uploadImage = async() => {
-        const options = { selectionLimit: 2 }
-        let result = await launchImageLibrary(options)// returns assets obj with arr objects: result.assets?.[0].fileName)
-        if(result?.assets?.length) {
-            console.log("assets:", result?.assets)
+    const uploadImage = async () => {
+        let result = await launchImageLibrary()// returns assets obj with arr objects: result.assets?.[0].fileName)
+        if (result?.assets?.length) {
+            // console.log("assets:", result?.assets)
             setImages((prev) => [...prev, ...result?.assets])
         } else {
             console.log("an errors ocurred: ", result.error)
@@ -49,17 +51,23 @@ const CreateListingScreen = ({ navigation }) => {
 
     // onChange
     const handleInputOnChange = (key, value) => {
-        setValues((prev) => ({...prev, [key]:value}))
-        console.log("values: ", values)
+        console.log("handleInputChange: ", key, value)
+        setValues((prev) => ({ ...prev, [key]: value }))
+    }
+
+    // submit
+    const submitCreateListing = () => {
+        console.log("submitCreateListing, values: ", values)
     }
 
 
 
     return (
         <SafeAreaView>
-            <KeyboardAvoidingView behaviour="position">
-                <ScrollView>
+            <ScrollView>
+                <KeyboardAvoidingView behaviour="position">
                     <Header title="Create Listing" showBackBtn onPressCb={goBack} />
+                    
                     <View style={styles.container}>
                         <Text style={styles.title}>Upload photos</Text>
                         <TouchableOpacity style={styles.uploadContainer} onPress={uploadImage}>
@@ -67,41 +75,56 @@ const CreateListingScreen = ({ navigation }) => {
                                 <Text style={styles.uploadPlus}>+</Text>
                             </View>
                         </TouchableOpacity>
-                        
-                        <View style={styles.imagesContainer}>
-                        { images?.map((item, index) => {
-                            return(
-                                <View key={`${item?.fileName}-${index}`}>
-                                    <Pressable style={styles.closeIconContainer} onPress={() => removeImage(item)}>
-                                        <Image style={styles.closeIcon} source={require("../../../assets/icons/close.png")} />
-                                    </Pressable>
-                                    <Image source={{uri: item?.uri}} style={styles.image}/> 
-                                </View>
-                            )
-                        })}
-                        </View>
-                        {/* native loader */}
-                        { loading ? <ActivityIndicator /> : null }
 
-                        <Input 
-                            labelText="Title" 
+                        <View style={styles.imagesContainer}>
+                            {images?.map((item, index) => {
+                                return (
+                                    <View key={`${item?.fileName}-${index}`}>
+                                        <Pressable style={styles.closeIconContainer} onPress={() => removeImage(item)}>
+                                            <Image style={styles.closeIcon} source={require("../../../assets/icons/close.png")} />
+                                        </Pressable>
+                                        <Image source={{ uri: item?.uri }} style={styles.image} />
+                                    </View>
+                                )
+                            })}
+                            {/* native loader */}
+                            {loading ? <ActivityIndicator /> : null}
+                        </View>
+
+                        <Input
+                            labelText="Title"
                             placeholder="Listing title"
-                            onChangeCb={(value) => handleInputOnChange("title", value)} />
-                        <Input 
-                            labelText="Price" 
-                            placeholder="Enter price in HKD" 
-                            onChangeCb={(value) => handleInputOnChange("price", value)} 
+                            value={values.title}
+                            onChangeCb={(value) => handleInputOnChange("title", value)} // onChangeCb: has value, pass to handleInputOnChange
+                        />
+                        {/* category select input: modal will handle selection */}
+                        <Input
+                            labelText="Category"
+                            placeholder="Select category"
+                            style={styles.categoryInput}
+                            isSelectInput
+                            options={categoriesData}
+                            value={values.category}
+                            onChangeCb={(value) => handleInputOnChange("category", value)} // onChangeCb: has value, pass to handleInputOnChange
+                        />
+                        <Input
+                            labelText="Price"
+                            placeholder="Enter price in HKD"
+                            value={values.price}
+                            onChangeCb={(value) => handleInputOnChange("price", value)} // onChangeCb: has value, pass to handleInputOnChange
                             keyboardType="numeric" />
-                        <Input 
-                            labelText="Description" 
-                            placeholder="Enter a description"  
-                            onChangeCb={(value) => handleInputOnChange("title", value)} 
-                            multiline 
+                        <Input
+                            labelText="Description"
+                            placeholder="Enter a description"
+                            value={values.description}
+                            onChangeCb={(value) => handleInputOnChange("description", value)} // onChangeCb: has value, pass to handleInputOnChange
+                            multiline
                             style={styles.textAreaContainer} />
 
+                        <Button title="Submit" onPressCb={submitCreateListing} />
                     </View>
-                </ScrollView>
-            </KeyboardAvoidingView>
+                </KeyboardAvoidingView>
+            </ScrollView>
         </SafeAreaView>
     )
 }

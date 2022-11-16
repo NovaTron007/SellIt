@@ -27,6 +27,36 @@ const styles = StyleSheet.create({
         width: 24,
         height: 24,
         marginHorizontal: 16
+    },
+    categoryArrow: {
+        transform:[{rotate: "90deg"}],
+        width: 24,
+        height: 24,
+        marginHorizontal: 16
+    },
+    modal: {
+        flex: 1, // take up whole height (col)
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "rgba(0,0,0,0.5)"
+    },
+    modalContent: {
+        backgroundColor: colors.white,
+        borderRadius: 8,
+        padding: 16,
+        width: "80%"
+    },
+    modalTitle: {
+        fontWeight: "700",
+        fontSize: 16,
+        marginBottom: 16
+    },
+    categoryTitle: {
+        color: colors.blue,
+        marginVertical: 8
+    },
+    selected: {
+        fontWeight: "700"
     }
 })
 
