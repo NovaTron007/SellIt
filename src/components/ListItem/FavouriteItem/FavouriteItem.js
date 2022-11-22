@@ -2,16 +2,25 @@ import React from 'react'
 import { View, Pressable, Image, Text } from 'react-native'
 import styles from "./styles"
 
-const FavouriteItem = ({title, price, image, onPress}) => {
+const FavouriteItem = ({title, price, image, icon, onPressCb}) => {
+
+  const removeItem = () => {
+    console.log("remove item!")
+  }
+
   return (
-    <Pressable style={styles.container} onPress={onPress}>
-        <Image style={styles.image} source={{uri: image }} />
-        <View style={styles.content}>
-          <Text style={styles.title}>{title}</Text>
-          <Text style={styles.price}>{price}</Text>
-        </View>
-        <Image source={require("../../../assets/icons/close.png") } style={styles.icon} />
-    </Pressable>
+    <View style={styles.container}>
+      <Pressable style={styles.content} onPress={onPressCb}>
+          <Image style={styles.image} source={{uri: image }} />
+          <View>
+            <Text style={styles.title}>{title}</Text>
+            <Text style={styles.price}>{price}</Text>
+          </View>
+      </Pressable>
+      <Pressable onPress={removeItem} style={styles.iconContainer}>
+        <Image source={icon ? require("../../../assets/icons/close.png") : icon } style={styles.icon} />
+      </Pressable>
+    </View>
   )
 }
 

@@ -8,6 +8,7 @@ import Carousel from "../../../components/carousel/Carousel"
 const ProductDetailsScreen = ({route, navigation}) => {
     // destructure product from route params
     const { product } = route?.params || {}
+    console.log("product: ", product)
     
     // go back
     const onBack = () => {
