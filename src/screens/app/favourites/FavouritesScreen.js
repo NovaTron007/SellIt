@@ -1,3 +1,4 @@
+import React from "react"
 import { View, FlatList } from 'react-native'
 import { SafeAreaView } from "react-native-safe-area-context"
 import styles from "./styles"
@@ -13,13 +14,13 @@ const FavouritesScreen = ({ navigation }) => {
 
   // for flatlist: render each product item as component, get item from FlatList
   const renderFavouriteItem = ({ item }) => {
-    // 1st arg: link to ProductDetails screen, 2nd arg: params go here
+    // 1st arg: link to ProductDetails screen, 2nd arg: pass product obj item as params for route (renamed as product)
     const onProductPress = () => {
-      navigation.navigate("ProductDetails", { product: item }) // pass product item as params for the route (renamed as product)
+      navigation.navigate("ProductDetails", { product: item })
     }
     // return item and pass props such as whole product item to onProductPress
     return (
-      <FavouriteItem {...item} onPress={onProductPress} />
+      <FavouriteItem {...item} onPressCb={onProductPress} />
     )
   }
 
@@ -41,4 +42,4 @@ const FavouritesScreen = ({ navigation }) => {
   )
 }
 
-export default FavouritesScreen
+export default React.memo(FavouritesScreen)

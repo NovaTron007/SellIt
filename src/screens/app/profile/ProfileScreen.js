@@ -20,8 +20,12 @@ const ProfileScreen = ({navigation}) => {
 
   // navigate to settings screen
   const settingsItemPress = () => {
-    navigation.navigate("Settings")
-    console.log("settingsItemPressCb")
+    navigation.navigate("Settings") // name in Stack.Navigator, Stack.Screen
+  }
+
+  // navigate to my listings screen
+  const myListingsOnPress = () => {
+    navigation.navigate("MyListings") // name in Stack.Navigator, Stack.Screen
   }
 
   // create listing link
@@ -42,7 +46,7 @@ const ProfileScreen = ({navigation}) => {
       <View style={styles.container}>
         <Text style={styles.name}>Profile Screen</Text>
         <Text style={styles.email}>test@test.com</Text>
-        <ProfileSettingsItem title="My Listings" content={`You have ${count} listings`} />
+        <ProfileSettingsItem title="My Listings" content={`You have ${count} listings`} onPressCb={myListingsOnPress} />
         <ProfileSettingsItem title="Settings" content="Account, FAQ, Contact" onPressCb={settingsItemPress} />
       </View>
       {/* buttons: buttonContainer set to flex: row as button is set to flex: 1 */}

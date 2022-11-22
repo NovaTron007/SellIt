@@ -9,6 +9,10 @@ const styles = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: colors.borderColor
     },
+    content: {
+        flexDirection: "row",
+        flex: 1 // allow title, price container to grow fully
+    },
     title: {
         fontSize: 14,
         color: colors.textGrey,
@@ -25,13 +29,13 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         marginRight: 20
     },
+    iconContainer: {
+        maxHeight: 24
+    },
     icon: {
         width: 24,
         height: 24,
-        marginLeft: 8
-    },
-    content: {
-        flex: 1 // allow title, price container to grow fully
+        marginLeft: 8    
     }
 })
 
