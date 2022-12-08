@@ -18,7 +18,7 @@ const FavouriteItem = ({title, price, image, icon, onPressCb}) => {
           </View>
       </Pressable>
       <Pressable onPress={removeItem} style={styles.iconContainer}>
-        <Image source={icon ? require("../../../assets/icons/close.png") : icon } style={styles.icon} />
+        <Image source={icon ? icon : require("../../../assets/icons/close.png")} style={styles.icon} />
       </Pressable>
     </View>
   )

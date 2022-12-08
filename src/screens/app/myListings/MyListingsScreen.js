@@ -28,7 +28,7 @@ const MyListingsScreen = ({navigation}) => {
          // multiline use ()
         return (
             // show close icon if icon, spread all item props instead passing indivdually
-            <FavouriteItem icon={require("../../../assets/icons/close.png")} {...item} onPressCb={onProductPress} />
+            <FavouriteItem icon={require("../../../assets/icons/trash.png")} {...item} onPressCb={onProductPress} />
         )
     }
 
