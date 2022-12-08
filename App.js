@@ -85,7 +85,7 @@ const Tabs = () => (
 
 const App = () => {
   // showh bottom tabs
-  const [loggedIn, setLoggedIn] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   useEffect(() => {
     GoogleSignin.configure({
@@ -101,7 +101,7 @@ const App = () => {
     <SafeAreaProvider>
       <NavigationContainer theme={theme}>
         <Stack.Navigator>
-          { loggedIn ? (
+          { isLoggedIn ? (
             <>
               <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} /> 
               <Stack.Screen name="ProductDetails" component={ProductDetailsScreen} options={{ headerShown: false}} />
