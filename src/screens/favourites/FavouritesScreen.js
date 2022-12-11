@@ -2,9 +2,9 @@ import React from "react"
 import { View, FlatList } from 'react-native'
 import { SafeAreaView } from "react-native-safe-area-context"
 import styles from "./styles"
-import { productsData } from "../../../assets/data/products"
-import Header from "../../../components/header/Header"
-import FavouriteItem from "../../../components/ListItem/FavouriteItem/FavouriteItem"
+import { productsData } from "../../assets/data/products"
+import Header from "../../components/header/Header"
+import FavouriteItem from "../../components/ListItem/FavouriteItem/FavouriteItem"
 
 const FavouritesScreen = ({ navigation }) => {
   // go back

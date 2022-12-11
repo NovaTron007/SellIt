@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from "react-native"
-import { colors } from "../../../utils/colors"
+import { colors } from "../../utils/colors"
 
 // destructure height from device
 const { height } = Dimensions.get("window")

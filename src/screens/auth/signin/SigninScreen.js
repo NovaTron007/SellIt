@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Text, ScrollView } from "react-native"
 import AuthHeader from "../../../components/authHeader/AuthHeader"
 import Input from "../../../components/input/Input"

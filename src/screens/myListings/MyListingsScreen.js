@@ -1,10 +1,10 @@
 import React from 'react'
 import { View, FlatList } from 'react-native'
 import { SafeAreaView } from "react-native-safe-area-context"
-import Header from "../../../components/header/Header"
+import Header from "../../components/header/Header"
 import styles from "../favourites/styles"
-import { productsData } from "../../../assets/data/products"
-import FavouriteItem from "../../../components/ListItem/FavouriteItem/FavouriteItem"
+import { productsData } from "../../assets/data/products"
+import FavouriteItem from "../../components/ListItem/FavouriteItem/FavouriteItem"
 
 const MyListingsScreen = ({navigation}) => {
     
@@ -28,7 +28,7 @@ const MyListingsScreen = ({navigation}) => {
          // multiline use ()
         return (
             // show close icon if icon, spread all item props instead passing indivdually
-            <FavouriteItem icon={require("../../../assets/icons/trash.png")} {...item} onPressCb={onProductPress} />
+            <FavouriteItem icon={require("../../assets/icons/trash.png")} {...item} onPressCb={onProductPress} />
         )
     }
 

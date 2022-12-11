@@ -1,10 +1,10 @@
 import React from "react"
-import { Pressable, View, Text } from 'react-native'
+import { View, Text } from 'react-native'
 import { SafeAreaView } from "react-native-safe-area-context"
 import styles from "./styles"
-import Header from "../../../components/header/Header"
-import Button from "../../../components/button/Button"
-import ProfileSettingsItem from "../../../components/ListItem/ProfileSettingsItem/ProfileSettingsItem"
+import Header from "../../components/header/Header"
+import Button from "../../components/button/Button"
+import ProfileSettingsItem from "../../components/ListItem/ProfileSettingsItem/ProfileSettingsItem"
 
 const ProfileScreen = ({navigation}) => {
   const count = 10

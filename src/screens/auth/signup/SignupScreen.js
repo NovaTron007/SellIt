@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { View, Text, ScrollView, Alert } from "react-native"
 import AuthHeader from "../../../components/authHeader/AuthHeader"
 import Input from "../../../components/input/Input"
@@ -9,13 +9,18 @@ import Separator from "../../../components/Separator/Separator"
 import GoogleButton from "../../../components/googleButton/GoogleButton"
 import { SafeAreaView } from "react-native-safe-area-context"
 // api call
-import { requestUsingAxios } from "../../../utils/request"
+import { signUp } from "../../../utils/api/apiService"
+import { UserContext } from "../../../../App"
+
+
 
 const SignupScreen = ({ navigation }) => {
   // checkbox state
   const [checked, setChecked] = useState(false)
   // input fields
   const [values, setValues] = useState({})
+  // destructure UserContext values
+  const { user, setUser } = useContext(UserContext)
 
   // sign in function
   const signIn = () => {
@@ -28,33 +33,25 @@ const SignupScreen = ({ navigation }) => {
     setValues((prev) => ({ ...prev, [key]: value }))
   }
 
-  // on sign up
-  const signUp = async () => {
-    // check form values
-    try {
-      if (!values?.fullName || !values?.email || !values?.password || !values?.confirmPassword)
-        // native popups
-        return Alert.alert("Please complete all fields")
-      if (values?.password !== values?.confirmPassword)
-        return Alert.alert("Passwords do not match")
-      if (!checked)
-        return Alert.alert("Please agree Terms and Privacy")
-      
-      console.log("value: ", values)
-      // send data obj to api
-      const response = await requestUsingAxios({
-        url:"/user/register",
-        method: "POST",
-        data: values
-      })
-      // success
-      console.log("signUp success: ", response)
-    } catch (err) {
-      // error
-      console.log("signup error: ", err.message)
-    }
+  // signUpOnPress
+  const signUpOnPress = async () => {
+    // incomplete fields
+    if (!values?.fullName || !values?.email || !values?.password || !values?.confirmPassword)
+      return Alert.alert("Please complete all fields") // native popup
+    // passwords match
+    if (values?.password !== values?.confirmPassword)
+      return Alert.alert("Passwords do not match")
+    // checked terms
+    if (!checked)
+      return Alert.alert("Please agree Terms and Privacy")
+    console.log("value: ", values)
+    // signup api
+    const token = await signUp(values)
+    console.log("token: ", token)
+    // update UserContext (Routes checks for user so redirects to homepage)
+    setUser(token)
   }
-
+  
   // go back
   const onBack = () => {
     navigation.goBack()
@@ -75,7 +72,7 @@ const SignupScreen = ({ navigation }) => {
           <Checkbox checked={checked} setChecked={setChecked} />
           <Text style={styles.agreeText}>I agree with <Text style={styles.agreeTextInner}>Terms & Privacy</Text></Text>
         </View>
-        <Button title="Sign Up" style={styles.button} onPressCb={signUp} />
+        <Button title="Sign Up" style={styles.button} onPressCb={signUpOnPress} />
 
         <Separator title="Or sign up with" />
 
