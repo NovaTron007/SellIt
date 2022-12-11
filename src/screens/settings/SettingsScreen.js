@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react"
 import { View, Text, Image, Linking, Pressable, ScrollView } from 'react-native'
 import { SafeAreaView } from "react-native-safe-area-context"
 import styles from "./styles"
-import Header from "../../../components/header/Header"
-import Button from "../../../components/button/Button"
-import ProfileSettingsItem from "../../../components/ListItem/ProfileSettingsItem/ProfileSettingsItem"
-import EditableInput from "../../../components/editableInput/EditableInput"
+import Header from "../../components/header/Header"
+import Button from "../../components/button/Button"
+import ProfileSettingsItem from "../../components/ListItem/ProfileSettingsItem/ProfileSettingsItem"
+import EditableInput from "../../components/editableInput/EditableInput"
 
 const SettingsScreen = ({navigation}) => {
   // get userInfo from api
@@ -60,7 +60,7 @@ const SettingsScreen = ({navigation}) => {
           <View style={styles.editHeader}>
             <Text style={styles.name}>Personal Information</Text>
             <Pressable onPress={() => setIsEditing(!isEditing)}>
-              <Image source={require("../../../assets/icons/edit.png")} style={styles.image} />
+              <Image source={require("../../assets/icons/edit.png")} style={styles.image} />
             </Pressable>
           </View>
 

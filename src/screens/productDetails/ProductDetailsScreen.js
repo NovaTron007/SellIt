@@ -2,8 +2,8 @@ import React from "react"
 import { View, Text, Image, ScrollView, Pressable, Linking } from 'react-native'
 import { SafeAreaView } from "react-native-safe-area-context"
 import styles from "./styles"
-import Button from "../../../components/button/Button"
-import Carousel from "../../../components/carousel/Carousel"
+import Button from "../../components/button/Button"
+import Carousel from "../../components/carousel/Carousel"
 
 const ProductDetailsScreen = ({route, navigation}) => {
     // destructure product from route params
@@ -41,12 +41,12 @@ const ProductDetailsScreen = ({route, navigation}) => {
                 </View>
                 {/* absolute back button */}
                 <Pressable style={styles.backContainer} onPress={onBack}>
-                    <Image style={styles.backImage} source={require("../../../assets/icons/back.png")} />
+                    <Image style={styles.backImage} source={require("../../assets/icons/back.png")} />
                 </Pressable>
             </ScrollView>
             <View style={styles.footer}>
                 <View style={styles.footerImageContainer}>
-                    <Image style={styles.footerImage} source={require("../../../assets/icons/marker-active.png")} />
+                    <Image style={styles.footerImage} source={require("../../assets/icons/marker-active.png")} />
                 </View>
                 <Button title="Contact Seller" onPressCb={onContact} />
             </View>

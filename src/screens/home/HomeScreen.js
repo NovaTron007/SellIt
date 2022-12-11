@@ -1,12 +1,13 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect, useContext} from 'react'
 import styles from "./styles"
-import Header from "../../../components/header/Header"
+import Header from "../../components/header/Header"
 import { FlatList, View, Text  } from 'react-native'
 import { SafeAreaView } from "react-native-safe-area-context"// iphone notch
-import { categoriesData } from "../../../assets/data/categories" // data file
-import { productsData } from "../../../assets/data/products" // data file
-import CategoryItem from "../../../components/categoriesNav/CategoryItem"
-import ProductHomeItem from "../../../components/ListItem/ProductHomeItem/ProductHomeItem"
+import { categoriesData } from "../../assets/data/categories" // data file
+import { productsData } from "../../assets/data/products" // data file
+import CategoryItem from "../../components/categoriesNav/CategoryItem"
+import ProductHomeItem from "../../components/ListItem/ProductHomeItem/ProductHomeItem"
+import { UserContext } from "../../../App"
 
 const HomeScreen = ({navigation}) => {
   // init selected index for category

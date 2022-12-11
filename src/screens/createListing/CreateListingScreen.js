@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { View, Text, ScrollView, TouchableOpacity, Image, Pressable, ActivityIndicator, KeyboardAvoidingView } from 'react-native'
 import { SafeAreaView } from "react-native-safe-area-context"
-import Header from "../../../components/header/Header"
+import Header from "../../components/header/Header"
 // image picker
 import { launchImageLibrary } from "react-native-image-picker"
 import styles from "./styles"
-import Input from "../../../components/input/Input"
-import Button from "../../../components/button/Button"
+import Input from "../../components/input/Input"
+import Button from "../../components/button/Button"
 // destructure categoriesData array of objects from data file for category dropdown
-import { categoriesData } from "../../../assets/data/categories"
+import { categoriesData } from "../../assets/data/categories"
 
 const CreateListingScreen = ({ navigation }) => {
     // set images from uploadImage
@@ -81,7 +81,7 @@ const CreateListingScreen = ({ navigation }) => {
                                 return (
                                     <View key={`${item?.fileName}-${index}`}>
                                         <Pressable style={styles.closeIconContainer} onPress={() => removeImage(item)}>
-                                            <Image style={styles.closeIcon} source={require("../../../assets/icons/close.png")} />
+                                            <Image style={styles.closeIcon} source={require("../../assets/icons/close.png")} />
                                         </Pressable>
                                         <Image source={{ uri: item?.uri }} style={styles.image} />
                                     </View>

@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native"
-import { colors } from "../../../utils/colors"
+import { colors } from "../../utils/colors"
 
 const styles = StyleSheet.create({
     // push button to bottom: allow flex 1
