@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage"
 import { requestUsingAxios } from "./axiosRequest"
 
 
@@ -19,7 +20,7 @@ export const signUp = async (values) => {
       }
     } catch (err) {
       // error
-      console.log("signup error: ", err.message)
+      console.log("(apiService) signup error: ", err.message)
     }
   }
 
@@ -34,11 +35,14 @@ export const login = async (values) => {
         })
         // response with token
         if(response?.data?.token) {
-            console.log("login success: ", response?.data?.token)
+            console.log("(apiService) login success: ", response?.data?.token)
+            // save to async storage (react native localStorage)
+            await AsyncStorage.setItem("authToken", response?.data?.token)
+            // return token to SignupScreen
             return response?.data?.token
         }
     }
     catch(err) {
-        console.log("error during login: ", err.message)       
+        console.log("(apiService) error login: ", err.message)       
     }
 }

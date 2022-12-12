@@ -1,6 +1,6 @@
 
 // get global UserContext using useContext
-import React, { useContext, useState } from "react" 
+import React, { useContext, useEffect } from "react" 
 import { Image } from "react-native"
 // react navigation container
 import { NavigationContainer } from "@react-navigation/native"
@@ -22,6 +22,7 @@ import SettingsScreen from "./screens/settings/SettingsScreen"
 import CreateListingScreen from "./screens/createListing/CreateListingScreen"
 import MyListingsScreen from "./screens/myListings/MyListingsScreen"
 import { UserContext } from "../App"
+import AsyncStorage from "@react-native-async-storage/async-storage"
 
 
 // wrap Stack.Screen with screen components
@@ -84,9 +85,22 @@ const Tabs = () => (
 
 
 const Routes = () => {
-    // showh bottom tabs
-    const {user} = useContext(UserContext)
-    console.log("user routes: ", user)
+    // get global UserContext
+    const {user, setUser } = useContext(UserContext)
+
+    // setUser from storage on mount
+    useEffect(() => {
+        // IIFE 
+        (async () => {
+            const tokenInStorage = await AsyncStorage.getItem("authToken")
+            // const resetToken = await AsyncStorage.setItem("authToken", "")
+            console.log("tokenInStorage: ", tokenInStorage)
+            setUser(tokenInStorage)
+        })()
+    }, [])
+    
+
+
     return (
         <NavigationContainer theme={theme}>
             <Stack.Navigator>
