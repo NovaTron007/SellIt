@@ -9,3 +9,9 @@ export const requestUsingAxios = ({url, method, data}) => { // pass obj instead 
         data
     })
 }
+
+// add token to every request in headers.auth
+export const addTokenToAxios = (token) => {
+    console.log("token: ", token)
+    axios.defaults.headers.Authorization = token
+}

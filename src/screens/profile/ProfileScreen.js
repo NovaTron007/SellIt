@@ -1,12 +1,17 @@
-import React from "react"
+import React, { useEffect, useContext } from "react"
 import { View, Text } from 'react-native'
 import { SafeAreaView } from "react-native-safe-area-context"
 import styles from "./styles"
 import Header from "../../components/header/Header"
 import Button from "../../components/button/Button"
 import ProfileSettingsItem from "../../components/ListItem/ProfileSettingsItem/ProfileSettingsItem"
+import { getProfile } from "../../utils/api/apiService"
+import { ProfileContext } from "../../../App" // get global profile context
 
 const ProfileScreen = ({navigation}) => {
+  // get global state from context
+  const { profile, setProfile } = useContext(ProfileContext)
+
   const count = 10
   
   const logout = () => {
@@ -32,6 +37,18 @@ const ProfileScreen = ({navigation}) => {
   const createListing = () => {
     navigation.navigate("CreateListing")
   }
+
+  // get profile: call getProfile service onMount
+  useEffect(() => {
+    // IIFE 
+    (async () => {
+      const getProfileResponse = await getProfile() // token set in user (login) sent in headers request (in axiosRequest)
+      if(getProfileResponse) {
+        setProfile(getProfileResponse) // response is object
+      }
+    })()
+  }, [])
+  
   
 
   return (
@@ -44,8 +61,8 @@ const ProfileScreen = ({navigation}) => {
         onLogoutCb={logout}
       />
       <View style={styles.container}>
-        <Text style={styles.name}>Profile Screen</Text>
-        <Text style={styles.email}>test@test.com</Text>
+        <Text style={styles.name}>{profile?.fullName}</Text>
+        <Text style={styles.email}>{profile?.email}</Text>
         <ProfileSettingsItem title="My Listings" content={`You have ${count} listings`} onPressCb={myListingsOnPress} />
         <ProfileSettingsItem title="Settings" content="Account, FAQ, Contact" onPressCb={settingsItemPress} />
       </View>

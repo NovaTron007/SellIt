@@ -23,6 +23,7 @@ import CreateListingScreen from "./screens/createListing/CreateListingScreen"
 import MyListingsScreen from "./screens/myListings/MyListingsScreen"
 import { UserContext } from "../App"
 import AsyncStorage from "@react-native-async-storage/async-storage"
+import { addTokenToAxios } from "./utils/api/axiosRequest"
 
 
 // wrap Stack.Screen with screen components
@@ -92,19 +93,27 @@ const Routes = () => {
     useEffect(() => {
         // IIFE 
         (async () => {
-            const tokenInStorage = await AsyncStorage.getItem("authToken")
-            // const resetToken = await AsyncStorage.setItem("authToken", "")
-            console.log("tokenInStorage: ", tokenInStorage)
-            setUser(tokenInStorage)
+            const token = await AsyncStorage.getItem("authToken")
+            // const token = await AsyncStorage.setItem("authToken", "")
+            setUser({token}) // user obj with token
+            console.log("user?.token: ", user?.token)
         })()
     }, [])
+
+    // add user token to axios header request
+    useEffect(() => {
+        if(user) {
+            addTokenToAxios(user?.token)
+        }
+    }, [user])
+    
     
 
 
     return (
         <NavigationContainer theme={theme}>
             <Stack.Navigator>
-                {user ? (
+                {user?.token ? (
                     <>
                         <Stack.Screen name="Tabs" component={Tabs} options={{ headerShown: false }} />
                         <Stack.Screen name="ProductDetails" component={ProductDetailsScreen} options={{ headerShown: false }} />

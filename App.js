@@ -5,14 +5,16 @@ import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import { createContext } from "react";
 
 
-// create global UserContext
+// create global contexts
 export const UserContext = createContext()
+export const ProfileContext = createContext()
 
 
 
 const App = () => {
   // update UserContext
   const [user, setUser] = useState(null)
+  const [profile, setProfile] = useState(null)
 
   useEffect(() => {
     GoogleSignin.configure({
@@ -25,12 +27,14 @@ const App = () => {
 
 
   return (
-    // provide UserContext to all app, and setter function
-    <UserContext.Provider value={{ user, setUser}} >
-      <SafeAreaProvider>
-        <Routes />
-      </SafeAreaProvider>
-    </UserContext.Provider>
+    // provide Contexts to all app, with value and setter functions
+    <SafeAreaProvider>
+      <UserContext.Provider value={{ user, setUser}} >
+          <ProfileContext.Provider value={{ profile, setProfile }}>
+            <Routes />
+          </ProfileContext.Provider>
+      </UserContext.Provider>
+    </SafeAreaProvider>
   );
 };
 
