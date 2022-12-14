@@ -7,7 +7,8 @@ import { categoriesData } from "../../assets/data/categories" // data file
 import { productsData } from "../../assets/data/products" // data file
 import CategoryItem from "../../components/categoriesNav/CategoryItem"
 import ProductHomeItem from "../../components/ListItem/ProductHomeItem/ProductHomeItem"
-import { UserContext } from "../../../App"
+
+
 
 const HomeScreen = ({navigation}) => {
   // init selected index for category

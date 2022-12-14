@@ -19,15 +19,15 @@ const SignupScreen = ({ navigation }) => {
   const [checked, setChecked] = useState(false)
   // input fields
   const [values, setValues] = useState({})
-  // destructure UserContext values
-  const { user, setUser } = useContext(UserContext)
+  // destructure UserContext values with setter
+  const { setUser } = useContext(UserContext)
 
-  // sign in function
-  const signIn = () => {
-    console.log("SignIn")
+  // go to signin
+  const goSignIn = () => {
+    navigation.navigate("Signin")
   }
 
-  // form values
+  // update form values by dynamic keys
   const onChangeSignUp = (key, value) => {
     // set values
     setValues((prev) => ({ ...prev, [key]: value }))
@@ -44,10 +44,13 @@ const SignupScreen = ({ navigation }) => {
     // checked terms
     if (!checked)
       return Alert.alert("Please agree Terms and Privacy")
-    console.log("value: ", values)
-    // signup api
+      console.log("(signUpOnPress) values: ", values)
+    
+    // signup apiService
     const token = await signUp(values)
-    console.log("token: ", token)
+    
+    console.log("(signUpOnPress) token: ", token)
+    
     // update UserContext (Routes checks for user so redirects to homepage)
     setUser(token)
   }
@@ -80,7 +83,7 @@ const SignupScreen = ({ navigation }) => {
 
         <Text style={styles.footerText}>
           Already have an account?
-          <Text style={styles.footerLink} onPress={signIn}> Sign In</Text>
+          <Text style={styles.footerLink} onPress={goSignIn}> Sign In</Text>
         </Text>
 
       </ScrollView>
