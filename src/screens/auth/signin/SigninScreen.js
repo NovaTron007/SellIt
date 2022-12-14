@@ -44,8 +44,8 @@ const SigninScreen = ({navigation}) => {
         return Alert.alert("Please complete all fields")
         // login api service
         const token = await login(values)
-        // set user
-        setUser(token)
+        // set user as obj
+        setUser({token})
     } catch(err){
         console.log("(signInOnPress) error: ", err.message)
     }     

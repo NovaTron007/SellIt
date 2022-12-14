@@ -1,8 +1,9 @@
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import { requestUsingAxios } from "./axiosRequest"
 
+// (async functions so use await when calling elsewhere)
 
-// signup function to pass obj to requestUsingAxios 
+// signup: function to pass obj to requestUsingAxios (async so use await when calling elsewhere)
 export const signUp = async (values) => {
     // check form values
     try {
@@ -45,4 +46,20 @@ export const login = async (values) => {
     catch(err) {
         console.log("(apiService) error login: ", err.message)       
     }
+}
+
+// get profile
+export const getProfile = async (values) => {
+  try {
+    // send data obj to axios, pass user token set from login
+    const response = await requestUsingAxios({
+      url: "/user/profile",
+      method: "GET",
+      data: values,
+    })
+    // response obj with user details
+    return response?.data
+  } catch (err) {
+    console.log("(api service) get profile err: ", err.message)
+  }
 }
