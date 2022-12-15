@@ -48,18 +48,38 @@ export const login = async (values) => {
     }
 }
 
-// get profile
-export const getProfile = async (values) => {
+// get profile: based on header.auth token
+export const getProfile = async () => {
   try {
-    // send data obj to axios, pass user token set from login
+    // user token set from login and sent in headers.auth
     const response = await requestUsingAxios({
       url: "/user/profile",
-      method: "GET",
-      data: values,
+      method: "GET"
     })
     // response obj with user details
     return response?.data
   } catch (err) {
     console.log("(api service) get profile err: ", err.message)
+  }
+}
+
+// update profile
+export const updateProfile = async (user) => {
+  try {
+    // send user obj
+    const response = await requestUsingAxios({
+      url: "/user/profile",
+      method: "PATCH",
+      data: user
+    })
+    // response with OK
+    if(response) {
+      // get profile using token set in axios.defaults.headers.Authorization
+      const profile = await getProfile()
+      return profile
+    }
+
+  } catch (err) {
+    console.log("(apiService) update profile err: ", err.message)
   }
 }
